@@ -1,0 +1,21 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "karma-jasmine/karma-jasmine.d.ts": {
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    }
+  }
+}
