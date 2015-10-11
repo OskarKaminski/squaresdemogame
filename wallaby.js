@@ -8,6 +8,7 @@ module.exports = function (wallaby) {
             "src/**/*.ts"
         ],
         tests: [
+            "typings/**/*.ts",
             "tests/**/*.ts"
         ]
     }
