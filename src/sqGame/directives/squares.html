@@ -1,0 +1,8 @@
+<h2>Squares</h2>
+<button ng-click="newGame()" class="btn btn-primary">Start</button>
+
+<div class="col-xs-6">
+    <square ng-repeat="color in squareColors"
+            ng-click="checkSequence($index)"
+            color="{{color}}"></square>
+</div>
