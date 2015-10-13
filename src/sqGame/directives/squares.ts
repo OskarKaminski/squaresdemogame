@@ -61,21 +61,25 @@ class SquaresDirective {
 
             function runSequence():void {
                 scope.sqNumbers = okArrayHelpers.randomNumbers(scope.movesQty(), scope.squareColors.length);
-                highlightSquare();
+                $(`.level`, elem).fadeIn().delay(500).fadeOut();
+                $timeout(()=>{
+                    highlightSquare();
+                }, 2000);
             }
 
             function highlightSquare():void {
-                $(`.square:eq(${scope.sqNumbers[scope.highlighted]})`, elem).css({'opacity': 1});
+                $(`.square-inner:eq(${scope.sqNumbers[scope.highlighted]})`, elem).css({'opacity': 1});
                 $timeout(()=> {
                     clearHighlights();
                 }, 500);
             }
 
             function clearHighlights():void {
-                $(`.square`, elem).css({'opacity': 0.3});
+                $(`.square-inner`, elem).css({'opacity': 0.3});
                 $timeout(()=> {
                     scope.highlighted++;
                     if (allHighlighted()) {
+                        $(`.square-inner`, elem).css({'opacity': ''});
                         return;
                     }
                     highlightSquare();

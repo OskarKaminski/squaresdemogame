@@ -1,8 +1,15 @@
-<h2>Squares lv.{{level}}</h2>
-<button ng-click="newGame()" class="btn btn-primary">Start</button>
-
-<div class="col-xs-6">
+<div class="text-center">
+	<div class="header">
+		<h2>Squares</h2>
+		<button ng-click="newGame()" class="btn btn-primary">Start</button>
+	</div>
     <square ng-repeat="color in squareColors"
             ng-click="checkSequence($index)"
-            color="{{color}}"></square>
+            color="{{color}}"
+            class="square"></square>
+</div>
+<div class="level">
+	<div class="level-text">
+		Level {{level}}
+	</div>
 </div>

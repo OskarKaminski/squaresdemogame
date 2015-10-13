@@ -1,20 +1,23 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+var sass = require('gulp-sass');
 var webserver = require('gulp-webserver');
 
 var paths = {
     typeScript: ['./src/**/*.ts', 'typings/tsd.d.ts'],
     html: ['./src/**/*.html'],
+    styles: ['./src/**/*.scss'],
     libs: ['./bower_components/angular/angular.min.js',
            './bower_components/jquery/dist/jquery.min.js',
            './bower_components/bootstrap/dist/css/bootstrap.min.css']
 };
 
-gulp.task('default', ['compileTypescript', 'copyHtml', 'copyLibs', 'watch']);
+gulp.task('default', ['compileTypescript', 'copyHtml', 'copyLibs', 'compileScss', 'watch']);
 
 gulp.task('watch', function () {
     gulp.watch(paths.typeScript, ['compileTypescript']);
     gulp.watch(paths.html, ['copyHtml']);
+    gulp.watch(paths.styles, ['compileScss']);
 });
 
 gulp.task('webserver', function() {
@@ -38,4 +41,8 @@ gulp.task('copyHtml', function () {
 
 gulp.task('copyLibs', function () {
     return gulp.src(paths.libs).pipe(gulp.dest('./dist/lib/'));
+});
+
+gulp.task('compileScss', function () {
+    return gulp.src(paths.styles).pipe(sass()).pipe(gulp.dest('./dist'));
 });

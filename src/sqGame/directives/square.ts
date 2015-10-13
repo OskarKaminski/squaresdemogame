@@ -9,7 +9,7 @@ class SquareDirective{
         },
         this.templateUrl = 'sqGame/directives/square.html';
         SquareDirective.prototype.link = (scope:any, elem:ng.IRootElementService)=>{
-            $('.square', elem).css({'background-color': scope.color});
+            $('.square-inner', elem).css({'background-color': scope.color});
         }
     }
 }

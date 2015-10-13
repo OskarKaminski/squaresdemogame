@@ -1,0 +1,51 @@
+.square {
+	display: inline-block;
+	line-height: 1;
+	width: 50%;
+	&:nth-child(even) {
+		text-align: right;
+	}
+	&:nth-child(odd) {
+		text-align: left;
+	}	
+	.square-inner{
+		display: inline-block;
+		width: 200px;
+		height: 200px;
+		margin: 0px 7px 10px 7px;
+		opacity: 0.3;
+		cursor: pointer;
+		@media (max-width: 768px) {
+			width: 150px;
+			height: 150px;
+		}
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.header {
+	margin: 20px 0;
+	.btn-start {
+		display: inline-block;
+	}
+
+}
+
+.level {
+	display: none;
+	text-align: center;
+	position: absolute;
+	top: 275px;
+	left:0;
+	right:0;
+	.level-text {
+		display: inline-block;
+		font-size: 40px;
+		padding: 20px;
+		background: #fff;
+		z-index: 1;
+		border-radius: 4px;
+	}
+}
