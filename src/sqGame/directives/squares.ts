@@ -7,30 +7,44 @@ class SquaresDirective{
         this.templateUrl = 'sqGame/directives/squares.html';
 
         SquaresDirective.prototype.link = (scope:any, elem:any) =>{
-            let level = 1,
-                highlighted = 0,
-                initMovesQty = 3,
-                movesQty = initMovesQty + level,
+            Object.assign(scope,
+                {
+                    initMovesQty: 3,
+                    squareColors: ['red', 'blue', 'green', 'yellow'],
+                    newGame() {
+                        restartStats();
+                        runSequence();
+                    },
+                    movesQty(){
+                        return this.initMovesQty + this.level;
+                    }
+                });
+
+            let highlighted = 0,
                 sqNumbers: Array<number>,
                 timesClicked = 0;
 
-            scope.newGame = ()=>{
-                console.log(sqNumbers);
-                runSequence();
-            }
-            scope.squareColors = ['red', 'blue', 'green', 'yellow'];
             scope.checkSequence = (i:number)=>{
                 if(sqNumbers[timesClicked] !== i){
                     alert('błąd!');
+                    scope.level = 1;
                 } else{
                     timesClicked++;
-                    if(timesClicked === movesQty){
+                    if(timesClicked === scope.movesQty()){
                         timesClicked = 0;
-                        alert('Wygrałeś!');
+                        scope.level++;
+                        alert(`Level ${scope.level}`);
+                        runSequence();
                     }
                 }
             }
-            let squaresQty = scope.squareColors.length;
+
+            function restartStats(){
+                scope.level = 1;
+                timesClicked = 0;
+                highlighted = 0;
+                sqNumbers = [];
+            }
 
             function randomNumbers(qty:number, max:number){
                 let numbers:any[] = [];
@@ -42,7 +56,8 @@ class SquaresDirective{
             }
 
             function runSequence(){
-                sqNumbers = randomNumbers(movesQty, squaresQty);
+                let movesQty = scope.movesQty();
+                sqNumbers = randomNumbers(scope.movesQty(), scope.squareColors.length);
                 highlightSquare();
 
                 function highlightSquare(){
