@@ -2,7 +2,7 @@ describe("squaresDirective",() => {
 
     let compile, scope, directiveEl;
 
-    beforeEach(module('app'));
+    beforeEach(angular.mock.module('app'));
     beforeEach(inject(($compile, $rootScope:any) => {
         compile = $compile;
         scope = $rootScope.$new();
