@@ -44,7 +44,11 @@ class SquaresDirective {
             }
 
             function restartGame():void {
-                newLevel(1);
+                $(`.you-loose`, elem).fadeIn();
+                $timeout(()=>{
+                    $(`.you-loose`, elem).fadeOut()
+                    newLevel(1);
+                }, 1000);
             }
 
             function nextLevel():void {

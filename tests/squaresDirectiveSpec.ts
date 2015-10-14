@@ -1,10 +1,11 @@
 describe("squaresDirective",() => {
 
-    let compile, scope, directiveEl;
+    let compile, scope, directiveEl, timeout;
 
     beforeEach(angular.mock.module('app'));
-    beforeEach(inject(($compile, $rootScope:any) => {
+    beforeEach(inject(($compile, $rootScope:any, $timeout) => {
         compile = $compile;
+        timeout = $timeout;
         scope = $rootScope.$new();
 
         directiveEl = getCompiledElement('<squares></squares>');
@@ -13,7 +14,7 @@ describe("squaresDirective",() => {
     describe("When user clicks start button",() => {
 
         beforeEach(() => {
-            let button = directiveEl.find('button');
+            let button = directiveEl.find('button').eq(0);
             button.triggerHandler('click');
             scope.$digest();
         });
@@ -67,8 +68,12 @@ describe("squaresDirective",() => {
                     expect(scope.timesClicked).toBe(0);
                 });
 
-                it("sqNumbers property should be empty array",()=>{
-                    expect(scope.sqNumbers).toEqual([]);
+                it("sqNumbers property should be empty array",(done)=>{
+                    timeout(function(){
+                        expect(scope.sqNumbers).toEqual([]);
+                        done();
+                    }, 1000);
+                    timeout.flush();
                 });
             });
 

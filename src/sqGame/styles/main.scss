@@ -26,26 +26,97 @@
 }
 
 .header {
+	height: 100px;
 	margin: 20px 0;
-	.btn-start {
-		display: inline-block;
+	span {
+		font-size:10px;
 	}
-
 }
 
-.level {
+.btn:focus, .btn:active, .btn:active:focus {
+  outline: none;
+}
+
+.info {
 	display: none;
 	text-align: center;
 	position: absolute;
-	top: 275px;
+	top: 300px;
 	left:0;
 	right:0;
-	.level-text {
+	&.level {
+		.text {
+			background: #fff;
+		}
+	}
+	&.you-loose {
+		.text {
+			background: red;
+			color: #fff;
+		}
+	}
+	.text {
+		border: 1px solid #fff;
 		display: inline-block;
 		font-size: 40px;
 		padding: 20px;
-		background: #fff;
 		z-index: 1;
 		border-radius: 4px;
 	}
+}
+
+.animated { 
+    -webkit-animation-duration: 0.7s; 
+    animation-duration: 0.7s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-timing-function: ease-in-out; 
+    animation-timing-function: ease-in-out; 
+	&.infinity{
+	    animation-iteration-count:infinite; 
+	    -webkit-animation-iteration-count:infinite; 
+	} 
+} 
+
+@-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.1); }
+    100% { -webkit-transform: scale(1); }
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+} 
+
+@-webkit-keyframes flipInX { 
+    0% { 
+        -webkit-transform: perspective(400px) rotateX(-90deg); 
+        opacity: 0; 
+    } 
+    100% { 
+        -webkit-transform: perspective(400px) rotateX(0deg); 
+        opacity: 1; 
+    } 
+} 
+@keyframes flipInX { 
+    0% { 
+        transform: perspective(400px) rotateX(-90deg); 
+        opacity: 0; 
+    } 
+    100% { 
+        transform: perspective(400px) rotateX(0deg); 
+        opacity: 1; 
+    } 
+} 
+.flipInX { 
+    -webkit-backface-visibility: visible !important; 
+    -webkit-animation-name: flipInX; 
+    backface-visibility: visible !important; 
+    animation-name: flipInX; 
 }
