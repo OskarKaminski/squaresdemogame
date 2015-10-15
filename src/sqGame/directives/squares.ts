@@ -1,12 +1,12 @@
 class SquaresDirective {
 
     templateUrl:string;
-    link:any;
+    link:ng.IDirectiveLinkFn;
 
-    constructor($timeout:any, okArrayHelpers:any) {
+    constructor($timeout:ng.ITimeoutService, okArrayHelpers:any) {
         this.templateUrl = 'sqGame/directives/squares.html';
 
-        SquaresDirective.prototype.link = (scope:any, elem:any) => {
+        SquaresDirective.prototype.link  = (scope:SqGame.ISquaresDirectiveScope, elem:ng.IRootElementService):void => {
             scope.initMovesQty = 3;
             scope.squareColors = ['red', 'blue', 'green', 'yellow'];
             scope.newGame = ()=> {
@@ -93,7 +93,7 @@ class SquaresDirective {
     }
 
     public static Factory() {
-        var directive = ['$timeout', 'okArrayHelpers', ($timeout:any, okArrayHelpers:any) => {
+        var directive = ['$timeout', 'okArrayHelpers', ($timeout:ng.ITimeoutService, okArrayHelpers:any) => {
             return new SquaresDirective($timeout, okArrayHelpers);
         }];
         return directive;
