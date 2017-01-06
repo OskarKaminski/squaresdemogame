@@ -120,3 +120,16 @@
     backface-visibility: visible !important; 
     animation-name: flipInX; 
 }
+
+.high-scores {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.your-nickname{
+	position: absolute;
+	top:40%;
+	left:50%;
+	transform: translate(-50%, -50%);
+}

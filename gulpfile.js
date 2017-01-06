@@ -8,8 +8,9 @@ var paths = {
     html: ['./src/**/*.html'],
     styles: ['./src/**/*.scss'],
     libs: ['./bower_components/angular/angular.min.js',
-           './bower_components/jquery/dist/jquery.min.js',
-           './bower_components/bootstrap/dist/css/bootstrap.min.css']
+        './bower_components/jquery/dist/jquery.min.js',
+        './bower_components/bootstrap/dist/css/bootstrap.min.css',
+        './bower_components/angular-ui-router/release/angular-ui-router.min.js']
 };
 
 gulp.task('default', ['compileTypescript', 'copyHtml', 'copyLibs', 'compileScss', 'watch']);
@@ -20,7 +21,7 @@ gulp.task('watch', function () {
     gulp.watch(paths.styles, ['compileScss']);
 });
 
-gulp.task('webserver', function() {
+gulp.task('webserver', function () {
     gulp.src('./dist/')
         .pipe(webserver({
             livereload: true,

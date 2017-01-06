@@ -3,6 +3,7 @@ module SqGame{
         initMovesQty: number;
         squareColors: Array<string>;
         level:number;
+        saveResult:Function;
         timesClicked:number;
         highlighted:number;
         sqNumbers:Array<number>;

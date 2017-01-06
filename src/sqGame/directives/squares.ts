@@ -1,10 +1,15 @@
 class SquaresDirective {
 
     templateUrl:string;
+    scope:any;
     link:ng.IDirectiveLinkFn;
+    saveResult:Function;
 
     constructor($timeout:ng.ITimeoutService, okArrayHelpers:any) {
         this.templateUrl = 'sqGame/directives/squares.html';
+        this.scope = {
+            saveResult: '&'
+        };
 
         SquaresDirective.prototype.link  = (scope:SqGame.ISquaresDirectiveScope, elem:ng.IRootElementService):void => {
             scope.initMovesQty = 3;
@@ -21,6 +26,7 @@ class SquaresDirective {
             scope.checkSequence = (clickedSquare:number):void => {
                 if (allHighlighted()) {
                     if (!correctAnswer(scope.sqNumbers[scope.timesClicked], clickedSquare)) {
+                        scope.saveResult({result: scope.level});
                         restartGame();
                     } else {
                         scope.timesClicked++;
